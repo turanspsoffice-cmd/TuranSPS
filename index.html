@@ -4,669 +4,656 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Turan SPS - Fresh Beverages from Georgia</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="responsive.css">
 </head>
 <body>
-    <!-- Language Selector -->
-    <div class="language-selector">
-        <button class="lang-btn" id="langBtn">EN ▼</button>
-        <div class="lang-dropdown" id="langDropdown">
-            <a href="#" class="lang-option" data-lang="en">English</a>
-            <a href="#" class="lang-option" data-lang="az">Azərbaycan</a>
-            <a href="#" class="lang-option" data-lang="ru">Русский</a>
-            <a href="#" class="lang-option" data-lang="ka">ქართული</a>
+
+    <!-- ══════════════════════════════════════
+         NAVIGATION
+    ══════════════════════════════════════ -->
+    <nav class="site-nav" id="siteNav">
+        <div class="nav-inner">
+
+            <!-- Logo -->
+            <a href="#home" class="nav-logo">
+                <img src="SPS-img/SPS_Logo_png/Turan-SPS.png" alt="Turan SPS" class="nav-logo-img">
+                <div class="nav-logo-text">
+                    <span class="nav-brand">TURAN <span class="nav-brand-s1">S</span><span class="nav-brand-p">P</span><span class="nav-brand-s2">S</span></span>
+                    <span class="nav-brand-tagline">Freshness of Georgia</span>
+                </div>
+            </a>
+
+            <!-- Desktop links + language -->
+            <div class="nav-right">
+                <a href="#home"     class="nav-link" data-translate="nav_home">Home</a>
+                <a href="#products" class="nav-link" data-translate="nav_products">Products</a>
+                <a href="#about"    class="nav-link" data-translate="nav_about">About</a>
+                <a href="#contact"  class="nav-link" data-translate="nav_contact">Contact</a>
+
+                <!-- Language picker -->
+                <div class="lang-picker" id="langPicker">
+                    <button class="lang-picker-btn" id="langPickerBtn" aria-expanded="false" aria-haspopup="true">
+                        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                        <span id="langPickerLabel">EN</span>
+                        <svg class="lang-picker-chevron" width="10" height="10" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+                    </button>
+                    <div class="lang-picker-menu" id="langPickerMenu" role="menu">
+                        <button class="lang-item" data-lang="en" role="menuitem">English</button>
+                        <button class="lang-item" data-lang="az" role="menuitem">Azərbaycan</button>
+                        <button class="lang-item" data-lang="ru" role="menuitem">Русский</button>
+                        <button class="lang-item" data-lang="ka" role="menuitem">ქართული</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Hamburger (mobile only) -->
+            <button class="hamburger" id="hamburger" aria-label="Open navigation menu" aria-expanded="false">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Mobile slide-in menu -->
+    <div class="mobile-nav" id="mobileNav" aria-hidden="true">
+        <div class="mobile-nav-inner">
+            <button class="mobile-nav-close" id="mobileNavClose" aria-label="Close menu">✕</button>
+            <nav class="mobile-nav-links">
+                <a href="#home"     class="mobile-nav-link" data-translate="nav_home">Home</a>
+                <a href="#products" class="mobile-nav-link" data-translate="nav_products">Products</a>
+                <a href="#about"    class="mobile-nav-link" data-translate="nav_about">About</a>
+                <a href="#contact"  class="mobile-nav-link" data-translate="nav_contact">Contact</a>
+            </nav>
+            <div class="mobile-lang-row">
+                <button class="mobile-lang" data-lang="en">EN</button>
+                <button class="mobile-lang" data-lang="az">AZ</button>
+                <button class="mobile-lang" data-lang="ru">RU</button>
+                <button class="mobile-lang" data-lang="ka">KA</button>
+            </div>
         </div>
     </div>
+    <div class="mobile-nav-overlay" id="mobileNavOverlay"></div>
 
-    <!-- Header Section -->
-    <header class="main-header">
-        <div class="header-content">
-            <div class="logo-section">
-                <img src="SPS-img/SPS_Logo_png/Turan-SPS.png" alt="Turan SPS Logo" class="logo">
-                <div class="brand-name">
-                    <span class="turan">Turan</span>
-                    <span class="sps">
-                        <span class="s-yellow">S</span>
-                        <span class="p-white">P</span>
-                        <span class="s-yellow">S</span>
-                    </span>
-                </div>
-            </div>
-            <nav class="main-nav">
-                <a href="#home" class="nav-link" data-translate="nav_home">Home</a>
-                <a href="#products" class="nav-link" data-translate="nav_products">Products</a>
-                <a href="#about" class="nav-link" data-translate="nav_about">About</a>
-                <a href="#contact" class="nav-link" data-translate="nav_contact">Contact</a>
-            </nav>
-        </div>
-    </header>
 
-    <!-- Hero Section with Layered Parallax Effect -->
-    <section class="hero-section" id="home">
-        <div class="parallax-container" id="parallaxContainer">
-            <div class="parallax-layer sky-layer" data-depth="0.1">
-                <img src="SPS-img/Layers_png/sky.png" alt="Sky Background" class="layer-image">
-            </div>
-            <div class="parallax-layer mountains-layer" data-depth="0.3">
-                <img src="SPS-img/Layers_png/mountains.png" alt="Mountains" class="layer-image">
-            </div>
-            <div class="parallax-layer trees-layer" data-depth="0.5">
-                <img src="SPS-img/Layers_png/trees.png" alt="Trees" class="layer-image">
-            </div>
-            <div class="hero-overlay"></div>
-            <div class="hero-content">
-                <h1 class="hero-title" data-translate="hero_title">Fresh From Nature</h1>
-                <p class="hero-subtitle" data-translate="hero_subtitle">Premium Georgian Beverages with Natural Fruit Essence</p>
-            </div>
+    <!-- ══════════════════════════════════════
+         HERO — scroll parallax layers
+    ══════════════════════════════════════ -->
+    <section class="hero" id="home">
+        <div class="hero-layer" id="layerSky">
+            <img src="SPS-img/Layers_png/sky.png" alt="" class="hero-layer-img" loading="eager">
         </div>
+        <div class="hero-layer" id="layerMountains">
+            <img src="SPS-img/Layers_png/mountains.png" alt="" class="hero-layer-img" loading="eager">
+        </div>
+        <div class="hero-layer" id="layerTrees">
+            <img src="SPS-img/Layers_png/trees.png" alt="" class="hero-layer-img" loading="eager">
+        </div>
+        <div class="hero-fade"></div>
+
+        <div class="hero-body" id="heroBody">
+            <h1 class="hero-title" data-translate="hero_title">Fresh From Nature</h1>
+            <p  class="hero-sub"   data-translate="hero_subtitle">Premium Georgian Beverages with Natural Fruit Essence</p>
+            <a href="#products" class="btn-cta">
+                <span data-translate="nav_products">Products</span>
+                <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </a>
+        </div>
+
+        <!-- Floating decorative elements -->
+        <span class="hero-deco d1" aria-hidden="true">💧</span>
+        <span class="hero-deco d2" aria-hidden="true">🌿</span>
+        <span class="hero-deco d3" aria-hidden="true">✨</span>
+        <span class="hero-deco d4" aria-hidden="true">💧</span>
     </section>
 
-    <!-- Main Content Section -->
-    <main class="main-content" id="products">
-        <!-- Chito Gvrito Brand Banner with Text -->
-        <section class="brand-banner-section">
-            <!-- Banner Image -->
-            <div class="brand-banner-wrapper">
-                <video class="brand-banner-image" autoplay muted loop playsinline poster="SPS-img/ChitoGvrito_png/Chito_banervid.png">
-                    <source src="SPS-img/ChitoGvrito_png/Chito_banervid.mp4" type="video/mp4">
-                    Your browser does not support the video tag.
-                </video>
-            </div>
-            
-            <!-- Banner Text Below -->
-            <div class="banner-text-wrapper">
-                <div class="banner-text">
-                    <h2 data-translate="banner_title">Turan SPS</h2>
-                    <p data-translate="banner_text">Make every day refreshing with natural taste and healthy fruit juices, therapeutic mineral and spring waters, delicious lemonades.</p>
-                </div>
-            </div>
-        </section>
 
-        <!-- Chito Gvrito Products Showcase -->
-        <section class="products-showcase">
-            <div class="showcase-header">
-                <h2 class="showcase-title" data-translate="showcase_title">Chito Gvrito</h2>
-                <p class="showcase-subtitle" data-translate="showcase_subtitle">Original Georgian lemonade prepared with natural flavors and traditional recipes.</p>
-            </div>
+    <!-- ══════════════════════════════════════
+         MAIN CONTENT
+    ══════════════════════════════════════ -->
+    <main id="products">
 
-            <div class="products-grid">
-                <!-- Product 1: Duchess Lemonade -->
-                <div class="product-item">
-                    <div class="product-layout">
-                        <div class="product-image-container">
-                            <img src="SPS-img/ChitoGvrito_png/Chito_armud.png" alt="Duchess Lemonade" class="product-image">
-                        </div>
-                        <div class="product-details">
-                            <h3 class="product-name" data-translate="product1_name">Chito Gvrito Duchess Lemonade</h3>
-                            <p class="product-description" data-translate="product1_desc">A carbonated drink rich with pear (duchess) flavor, natural taste and freshness that gives vitality in every sip. Bottle capacity: 0.5L. Packaging: Box (12 × 0.5L).</p>
-                            <div class="product-tags">
-                                <span class="product-tag" data-translate="tag_natural">Natural</span>
-                                <span class="product-tag" data-translate="tag_refreshing">Refreshing</span>
-                                <span class="product-tag" data-translate="tag_fruity">Fruity</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Product 2: Tarragon Lemonade -->
-                <div class="product-item">
-                    <div class="product-layout">
-                        <div class="product-image-container">
-                            <img src="SPS-img/ChitoGvrito_png/Chito_tarxun.png" alt="Tarragon Lemonade" class="product-image">
-                        </div>
-                        <div class="product-details">
-                            <h3 class="product-name" data-translate="product2_name">Chito Gvrito Tarragon Lemonade</h3>
-                            <p class="product-description" data-translate="product2_desc">A drink that gives unforgettable freshness in every sip with natural tarragon flavor and carbonated freshness. Bottle capacity: 0.5L. Packaging: Box (12 × 0.5L).</p>
-                            <div class="product-tags">
-                                <span class="product-tag" data-translate="tag_herbal">Herbal</span>
-                                <span class="product-tag" data-translate="tag_aromatic">Aromatic</span>
-                                <span class="product-tag" data-translate="tag_traditional">Traditional</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- IRIB Brand Section -->
-        <section class="brand-banner-section">
-            <!-- Banner Image -->
-                <div class="brand-banner-wrapper">
-                    <video class="brand-banner-image" autoplay muted loop playsinline poster="SPS-img/IRIB_png/IRIB_baner.png">
-                        <source src="SPS-img/IRIB_png/IRIB_banervid.mp4" type="video/mp4">
-                        Your browser does not support the video tag.
+        <!-- ─── Chito Gvrito video banner ─── -->
+        <section class="page-section reveal">
+            <div class="container">
+                <div class="video-banner">
+                    <video class="video-banner-media" autoplay muted loop playsinline
+                           poster="SPS-img/ChitoGvrito_png/Chito_banervid.png">
+                        <source src="SPS-img/ChitoGvrito_png/Chito_banervid.mp4" type="video/mp4">
                     </video>
-                </div>
-            
-            <!-- Banner Text Below -->
-            <div class="banner-text-wrapper">
-                <div class="banner-text">
-                    <h2 data-translate="irib_title">IRIB Premium Juices</h2>
-                    <p data-translate="irib_text">IRIB premium juices are fruit juices produced in Dagestan, distinguished by their natural taste and high quality. IRIB products, prepared with modern production technologies, combine freshness and benefits. IRIB juices are presented to customers in Azerbaijan and are an ideal choice for your daily use.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- IRIB Products Showcase -->
-        <section class="products-showcase">
-            <div class="showcase-header">
-                <h2 class="showcase-title" data-translate="irib_showcase_title">IRIB Juices & Nectars</h2>
-                <p class="showcase-subtitle" data-translate="irib_showcase_subtitle">High-quality natural juices and nectars made from ecologically clean fruits</p>
-            </div>
-
-            <div class="products-grid">
-                <!-- Product 3: Apple Juice -->
-                <div class="product-item">
-                    <div class="product-layout">
-                        <div class="product-image-container">
-                            <img src="SPS-img/IRIB_png/IRIB_alma.png" alt="Apple Juice" class="product-image">
-                        </div>
-                        <div class="product-details">
-                            <h3 class="product-name" data-translate="product3_name">Apple Juice</h3>
-                            <p class="product-description" data-translate="product3_desc">A perfect choice where natural apple taste, freshness and quality come together.</p>
-                            <div class="product-tags">
-                                <span class="product-tag" data-translate="tag_natural">Natural</span>
-                                <span class="product-tag" data-translate="tag_refreshing">Refreshing</span>
-                                <span class="product-tag" data-translate="tag_fruity">Fruity</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Product 4: Pineapple Juice -->
-                <div class="product-item">
-                    <div class="product-layout">
-                        <div class="product-image-container">
-                            <img src="SPS-img/IRIB_png/IRIB_ananas.png" alt="Pineapple Juice" class="product-image">
-                        </div>
-                        <div class="product-details">
-                            <h3 class="product-name" data-translate="product4_name">Pineapple Juice</h3>
-                            <p class="product-description" data-translate="product4_desc">Adds freshness to your day with 100% natural composition and exotic taste.</p>
-                            <div class="product-tags">
-                                <span class="product-tag" data-translate="tag_natural">Natural</span>
-                                <span class="product-tag" data-translate="tag_refreshing">Refreshing</span>
-                                <span class="product-tag" data-translate="tag_fruity">Fruity</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Product 5: Cherry Juice -->
-                <div class="product-item">
-                    <div class="product-layout">
-                        <div class="product-image-container">
-                            <img src="SPS-img/IRIB_png/IRIB_gilas.png" alt="Cherry Juice" class="product-image">
-                        </div>
-                        <div class="product-details">
-                            <h3 class="product-name" data-translate="product5_name">Cherry Juice</h3>
-                            <p class="product-description" data-translate="product5_desc">Creates a real taste sensation in every sip with rich cherry taste and freshness.</p>
-                            <div class="product-tags">
-                                <span class="product-tag" data-translate="tag_natural">Natural</span>
-                                <span class="product-tag" data-translate="tag_refreshing">Refreshing</span>
-                                <span class="product-tag" data-translate="tag_fruity">Fruity</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Product 6: Multifruit Juice -->
-                <div class="product-item">
-                    <div class="product-layout">
-                        <div class="product-image-container">
-                            <img src="SPS-img/IRIB_png/IRIB_multi.png" alt="Multifruit Juice" class="product-image">
-                        </div>
-                        <div class="product-details">
-                            <h3 class="product-name" data-translate="product6_name">Multifruit Juice</h3>
-                            <p class="product-description" data-translate="product6_desc">Presents rich taste and freshness together with the harmony of various fruits.</p>
-                            <div class="product-tags">
-                                <span class="product-tag" data-translate="tag_natural">Natural</span>
-                                <span class="product-tag" data-translate="tag_refreshing">Refreshing</span>
-                                <span class="product-tag" data-translate="tag_fruity">Fruity</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Product 7: Orange Juice -->
-                <div class="product-item">
-                    <div class="product-layout">
-                        <div class="product-image-container">
-                            <img src="SPS-img/IRIB_png/IRIB_portaqal.png" alt="Orange Juice" class="product-image">
-                        </div>
-                        <div class="product-details">
-                            <h3 class="product-name" data-translate="product7_name">Orange Juice</h3>
-                            <p class="product-description" data-translate="product7_desc">Adds freshness and energy to your day with 100% natural orange taste.</p>
-                            <div class="product-tags">
-                                <span class="product-tag" data-translate="tag_natural">Natural</span>
-                                <span class="product-tag" data-translate="tag_refreshing">Refreshing</span>
-                                <span class="product-tag" data-translate="tag_fruity">Fruity</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Product 8: Peach Juice -->
-                <div class="product-item">
-                    <div class="product-layout">
-                        <div class="product-image-container">
-                            <img src="SPS-img/IRIB_png/IRIB_saftali.png" alt="Peach Juice" class="product-image">
-                        </div>
-                        <div class="product-details">
-                            <h3 class="product-name" data-translate="product8_name">Peach Juice</h3>
-                            <p class="product-description" data-translate="product8_desc">Brings together soft taste and freshness with 100% natural peach taste.</p>
-                            <div class="product-tags">
-                                <span class="product-tag" data-translate="tag_natural">Natural</span>
-                                <span class="product-tag" data-translate="tag_refreshing">Refreshing</span>
-                                <span class="product-tag" data-translate="tag_fruity">Fruity</span>
-                            </div>
-                        </div>
+                    <div class="video-banner-overlay">
+                        <h2 class="video-banner-title" data-translate="banner_title">Turan SPS</h2>
+                        <p  class="video-banner-text"  data-translate="banner_text">Make every day refreshing with natural taste and healthy fruit juices, therapeutic mineral and spring waters, delicious lemonades.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- SAIRME Water Brand Section -->
-        <section class="brand-banner-section">
-            <!-- Banner Image -->
-            <div class="brand-banner-wrapper">
-                <video class="brand-banner-image" autoplay muted loop playsinline poster="SPS-img/SAIRME_Water_png/Sairme_m_q_baner.png">
-                    <source src="SPS-img/SAIRME_Water_png/Sairme_m_q_banevid.mp4" type="video/mp4">
-                    Your browser does not support the video tag.
-                </video>
-            </div>
-            
-            <!-- Banner Text Below -->
-            <div class="banner-text-wrapper">
-                <div class="banner-text">
-                    <h2 data-translate="sairme_water_title">SAIRME Mineral Waters</h2>
-                    <p data-translate="sairme_water_text">Sairme Mineral Waters, in Georgia's Imereti region, are waters that form in the deep layers of the earth, naturally enriched with carbon dioxide, and have a balanced composition with beneficial minerals like calcium, magnesium, sodium. Sairme water, rich with natural minerals and lightly carbonated, is an ideal choice for both daily drinking and a healthy lifestyle. We also present this unique mineral water to our customers in Azerbaijan.</p>
+        <!-- ─── Chito Gvrito products ─── -->
+        <section class="page-section">
+            <div class="container">
+                <div class="section-head reveal">
+                    <h2 class="section-title" data-translate="showcase_title">Chito Gvrito</h2>
+                    <p  class="section-sub"   data-translate="showcase_subtitle">Original Georgian lemonade prepared with natural flavors and traditional recipes.</p>
+                </div>
+                <div class="product-stack">
+                    <!-- Card 1 -->
+                    <article class="pcard reveal">
+                        <div class="pcard-img-side bg-yellow-soft">
+                            <img src="SPS-img/ChitoGvrito_png/Chito_armud.png" alt="Duchess Lemonade" class="pcard-img" loading="lazy">
+                        </div>
+                        <div class="pcard-body">
+                            <h3 class="pcard-title" data-translate="product1_name">Chito Gvrito Duchess Lemonade</h3>
+                            <p  class="pcard-desc"  data-translate="product1_desc">A carbonated drink rich with pear (duchess) flavor, natural taste and freshness that gives vitality in every sip. Bottle capacity: 0.5L. Packaging: Box (12 × 0.5L).</p>
+                            <div class="tag-row">
+                                <span class="tag" data-translate="tag_natural">Natural</span>
+                                <span class="tag" data-translate="tag_refreshing">Refreshing</span>
+                                <span class="tag" data-translate="tag_fruity">Fruity</span>
+                            </div>
+                        </div>
+                    </article>
+                    <!-- Card 2 reversed -->
+                    <article class="pcard pcard--flip reveal">
+                        <div class="pcard-img-side bg-green-soft">
+                            <img src="SPS-img/ChitoGvrito_png/Chito_tarxun.png" alt="Tarragon Lemonade" class="pcard-img" loading="lazy">
+                        </div>
+                        <div class="pcard-body">
+                            <h3 class="pcard-title" data-translate="product2_name">Chito Gvrito Tarragon Lemonade</h3>
+                            <p  class="pcard-desc"  data-translate="product2_desc">A drink that gives unforgettable freshness in every sip with natural tarragon flavor and carbonated freshness. Bottle capacity: 0.5L. Packaging: Box (12 × 0.5L).</p>
+                            <div class="tag-row">
+                                <span class="tag" data-translate="tag_herbal">Herbal</span>
+                                <span class="tag" data-translate="tag_aromatic">Aromatic</span>
+                                <span class="tag" data-translate="tag_traditional">Traditional</span>
+                            </div>
+                        </div>
+                    </article>
                 </div>
             </div>
         </section>
 
-        <!-- SAIRME Water Products Showcase -->
-                <section class="products-showcase">
-                    <div class="showcase-header">
-                        <h2 class="showcase-title" data-translate="sairme_water_showcase_title">SAIRME Waters</h2>
-                        <p class="showcase-subtitle" data-translate="sairme_water_showcase_subtitle">Pure natural waters from the legendary Sairme springs</p>
-                    </div>
 
-                    <div class="products-grid">
-                        <!-- Product: Spring Water -->
-                        <div class="product-item">
-                            <div class="product-layout">
-                                <!-- Product Image -->
-                                <div class="product-image-container">
-                                    <img src="SPS-img/SAIRME_Water_png/Sairme_q.png" alt="Sairme Spring Water" class="product-image">
+        <!-- ─── IRIB brand section ─── -->
+        <section class="page-section section-tinted">
+            <div class="container">
+                <!-- Brand intro split -->
+                <div class="brand-intro reveal">
+                    <div class="brand-intro-text">
+                        <h2 class="section-title" data-translate="irib_title">IRIB Premium Juices</h2>
+                        <p  class="section-sub left-align" data-translate="irib_text">IRIB premium juices are fruit juices produced in Dagestan, distinguished by their natural taste and high quality. IRIB products, prepared with modern production technologies, combine freshness and benefits. IRIB juices are presented to customers in Azerbaijan and are an ideal choice for your daily use.</p>
+                        <div class="badge-row">
+                            <span class="badge">✨ Premium Quality</span>
+                            <span class="badge">🌿 100% Natural</span>
+                        </div>
+                    </div>
+                    <div class="brand-intro-media">
+                        <video class="brand-intro-video" autoplay muted loop playsinline
+                               poster="SPS-img/IRIB_png/IRIB_baner.png">
+                            <source src="SPS-img/IRIB_png/IRIB_banervid.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                </div>
+
+                <!-- 3-col juice grid -->
+                <div class="section-head reveal" style="margin-top:4rem">
+                    <h2 class="section-title" data-translate="irib_showcase_title">IRIB Juices &amp; Nectars</h2>
+                    <p  class="section-sub"   data-translate="irib_showcase_subtitle">High-quality natural juices and nectars made from ecologically clean fruits</p>
+                </div>
+                <div class="juice-grid">
+                    <article class="jcard reveal" style="--d:0s">
+                        <div class="jcard-img-wrap"><img src="SPS-img/IRIB_png/IRIB_alma.png"     alt="Apple Juice"       class="jcard-img" loading="lazy"></div>
+                        <div class="jcard-body">
+                            <h3 class="jcard-title" data-translate="product3_name">Apple Juice</h3>
+                            <p  class="jcard-desc"  data-translate="product3_desc">A perfect choice where natural apple taste, freshness and quality come together.</p>
+                        </div>
+                    </article>
+                    <article class="jcard reveal" style="--d:.08s">
+                        <div class="jcard-img-wrap"><img src="SPS-img/IRIB_png/IRIB_ananas.png"   alt="Pineapple Juice"   class="jcard-img" loading="lazy"></div>
+                        <div class="jcard-body">
+                            <h3 class="jcard-title" data-translate="product4_name">Pineapple Juice</h3>
+                            <p  class="jcard-desc"  data-translate="product4_desc">Adds freshness to your day with 100% natural composition and exotic taste.</p>
+                        </div>
+                    </article>
+                    <article class="jcard reveal" style="--d:.16s">
+                        <div class="jcard-img-wrap"><img src="SPS-img/IRIB_png/IRIB_gilas.png"    alt="Cherry Juice"      class="jcard-img" loading="lazy"></div>
+                        <div class="jcard-body">
+                            <h3 class="jcard-title" data-translate="product5_name">Cherry Juice</h3>
+                            <p  class="jcard-desc"  data-translate="product5_desc">Creates a real taste sensation in every sip with rich cherry taste and freshness.</p>
+                        </div>
+                    </article>
+                    <article class="jcard reveal" style="--d:.24s">
+                        <div class="jcard-img-wrap"><img src="SPS-img/IRIB_png/IRIB_multi.png"    alt="Multi Fruit Juice" class="jcard-img" loading="lazy"></div>
+                        <div class="jcard-body">
+                            <h3 class="jcard-title" data-translate="product6_name">Multi Fruit Juice</h3>
+                            <p  class="jcard-desc"  data-translate="product6_desc">Presents rich taste and freshness together with the harmony of various fruits.</p>
+                        </div>
+                    </article>
+                    <article class="jcard reveal" style="--d:.32s">
+                        <div class="jcard-img-wrap"><img src="SPS-img/IRIB_png/IRIB_portaqal.png" alt="Orange Juice"      class="jcard-img" loading="lazy"></div>
+                        <div class="jcard-body">
+                            <h3 class="jcard-title" data-translate="product7_name">Orange Juice</h3>
+                            <p  class="jcard-desc"  data-translate="product7_desc">Adds freshness and energy to your day with 100% natural orange taste.</p>
+                        </div>
+                    </article>
+                    <article class="jcard reveal" style="--d:.4s">
+                        <div class="jcard-img-wrap"><img src="SPS-img/IRIB_png/IRIB_saftali.png"  alt="Peach Juice"       class="jcard-img" loading="lazy"></div>
+                        <div class="jcard-body">
+                            <h3 class="jcard-title" data-translate="product8_name">Peach Juice</h3>
+                            <p  class="jcard-desc"  data-translate="product8_desc">Brings together soft taste and freshness with 100% natural peach taste.</p>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ─── SAIRME Water ─── -->
+        <section class="page-section">
+            <div class="container">
+                <div class="section-head reveal">
+                    <h2 class="section-title" data-translate="sairme_water_showcase_title">SAIRME Waters</h2>
+                    <p  class="section-sub"   data-translate="sairme_water_showcase_subtitle">Pure natural waters from the legendary Sairme springs</p>
+                </div>
+
+                <!-- Water video banner -->
+                <div class="video-banner reveal" style="margin-bottom:3.5rem">
+                    <video class="video-banner-media" autoplay muted loop playsinline
+                           poster="SPS-img/SAIRME_Water_png/Sairme_m_q_baner.png">
+                        <source src="SPS-img/SAIRME_Water_png/Sairme_m_q_banevid.mp4" type="video/mp4">
+                    </video>
+                    <div class="video-banner-overlay">
+                        <h2 class="video-banner-title" data-translate="sairme_water_title">SAIRME Mineral Waters</h2>
+                        <p  class="video-banner-text"  data-translate="sairme_water_text">Sairme Mineral Waters, in Georgia's Imereti region, are waters that form in the deep layers of the earth, naturally enriched with carbon dioxide, and have a balanced composition with beneficial minerals like calcium, magnesium, sodium.</p>
+                    </div>
+                </div>
+
+                <!-- Water product cards -->
+                <div class="product-stack">
+                    <article class="pcard reveal">
+                        <div class="pcard-img-side bg-blue-soft">
+                            <img src="SPS-img/SAIRME_Water_png/Sairme_q.png" alt="Spring Water" class="pcard-img" loading="lazy">
+                        </div>
+                        <div class="pcard-body">
+                            <h3 class="pcard-title" data-translate="sairme_spring_name">Spring Water</h3>
+                            <p  class="pcard-desc"  data-translate="sairme_spring_desc">Waters extracted from the deep layers of Georgia's famous therapeutic Sairme region, rich with minerals and preserving their natural freshness. Gives health and energy in every sip. Bottle types: Plastic: 2L, 1L, 0.5L; Glass: 0.2L, 0.5L; Premium glass: 0.5L.</p>
+                            <div class="tag-row">
+                                <span class="tag" data-translate="tag_natural">Natural</span>
+                                <span class="tag" data-translate="tag_refreshing">Refreshing</span>
+                            </div>
+                        </div>
+                    </article>
+                    <article class="pcard pcard--flip reveal">
+                        <div class="pcard-img-side bg-cyan-soft">
+                            <img src="SPS-img/SAIRME_Water_png/Sairme_m.png" alt="Mineral Water" class="pcard-img" loading="lazy">
+                        </div>
+                        <div class="pcard-body">
+                            <h3 class="pcard-title" data-translate="sairme_mineral_name">Mineral Water</h3>
+                            <p  class="pcard-desc"  data-translate="sairme_mineral_desc">Sairme mineral waters are known for their natural composition, rich minerals and high quality, considered beneficial for the organism. We present these pure and refreshing mineral waters to our customers in Azerbaijan with the highest quality. Bottle types: Plastic: 2L, 1L, 0.5L; Glass: 0.2L, 0.5L; Premium glass: 0.5L.</p>
+                            <div class="tag-row">
+                                <span class="tag" data-translate="tag_natural">Natural</span>
+                                <span class="tag" data-translate="tag_herbal">Herbal</span>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+
+                <!-- Image pair -->
+                <div class="img-duo">
+                    <div class="img-duo-item reveal">
+                        <img src="SPS-img/SAIRME_Water_png/Sairme_6_q.png" alt="Sairme Spring Water Range" class="img-duo-img" loading="lazy">
+                    </div>
+                    <div class="img-duo-item reveal" style="--d:.15s">
+                        <img src="SPS-img/SAIRME_Water_png/Sairme_6_m.png" alt="Sairme Mineral Water Range" class="img-duo-img" loading="lazy">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ─── SAIRME Lemonade ─── -->
+        <section class="page-section section-tinted">
+            <div class="container">
+                <div class="section-head reveal">
+                    <h2 class="section-title" data-translate="sairme_lemonade_showcase_title">SAIRME Lemonades</h2>
+                    <p  class="section-sub"   data-translate="sairme_lemonade_showcase_subtitle">Natural mineral-based lemonades from Georgia's clean Sairme springs. Available in 0.5L glass bottles.</p>
+                </div>
+
+                <!-- Lemonade video banner -->
+                <div class="video-banner reveal" style="margin-bottom:3.5rem">
+                    <video class="video-banner-media" autoplay muted loop playsinline
+                           poster="SPS-img/SAIRME_Lemonade_png/SairmeL_baner.png">
+                        <source src="SPS-img/SAIRME_Lemonade_png/SairmeL_banervid.mp4" type="video/mp4">
+                    </video>
+                    <div class="video-banner-overlay">
+                        <h2 class="video-banner-title" data-translate="sairme_lemonade_title">SAIRME Lemonade</h2>
+                        <p  class="video-banner-text"  data-translate="sairme_lemonade_text">The company has been producing SAIRME LEMONADE since 2017. Prepared with high-quality Georgian water, offered in the budget segment.</p>
+                    </div>
+                </div>
+
+                <!-- 4-col lemonade grid -->
+                <div class="juice-grid juice-grid--4">
+                    <article class="jcard reveal" style="--d:0s">
+                        <div class="jcard-img-wrap"><img src="SPS-img/SAIRME_Lemonade_png/sl_armud.png"  alt="Pear Lemonade"     class="jcard-img" loading="lazy"></div>
+                        <div class="jcard-body">
+                            <h3 class="jcard-title" data-translate="sairme_pear_name">Pear Lemonade</h3>
+                            <p  class="jcard-desc"  data-translate="sairme_pear_desc">Delicate pear taste with natural mineral water.</p>
+                        </div>
+                    </article>
+                    <article class="jcard reveal" style="--d:.08s">
+                        <div class="jcard-img-wrap"><img src="SPS-img/SAIRME_Lemonade_png/sl_feyxua.png" alt="Feijoa Lemonade"   class="jcard-img" loading="lazy"></div>
+                        <div class="jcard-body">
+                            <h3 class="jcard-title" data-translate="sairme_feijoa_name">Feijoa Lemonade</h3>
+                            <p  class="jcard-desc"  data-translate="sairme_feijoa_desc">Exotic feijoa taste with a refreshing twist.</p>
+                        </div>
+                    </article>
+                    <article class="jcard reveal" style="--d:.16s">
+                        <div class="jcard-img-wrap"><img src="SPS-img/SAIRME_Lemonade_png/sl_tarxun.png" alt="Tarragon Lemonade" class="jcard-img" loading="lazy"></div>
+                        <div class="jcard-body">
+                            <h3 class="jcard-title" data-translate="sairme_tarragon_name">Tarragon Lemonade</h3>
+                            <p  class="jcard-desc"  data-translate="sairme_tarragon_desc">Herbal tarragon taste for a unique experience.</p>
+                        </div>
+                    </article>
+                    <article class="jcard reveal" style="--d:.24s">
+                        <div class="jcard-img-wrap"><img src="SPS-img/SAIRME_Lemonade_png/sl_uzum.png"   alt="Grape Lemonade"   class="jcard-img" loading="lazy"></div>
+                        <div class="jcard-body">
+                            <h3 class="jcard-title" data-translate="sairme_grape_name">Grape Lemonade</h3>
+                            <p  class="jcard-desc"  data-translate="sairme_grape_desc">Sweet grape essence with bright freshness.</p>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ─── About ─── -->
+        <section class="page-section about-section reveal" id="about">
+            <div class="about-blob ab1" aria-hidden="true"></div>
+            <div class="about-blob ab2" aria-hidden="true"></div>
+            <div class="container about-inner">
+                <h2 class="section-title text-center" data-translate="about_heading">About Turan SPS</h2>
+                <div class="about-glass">
+                    <p data-translate="about_text">Turan SPS is a leading company founded in 2024 and operating in the field of distribution of quality beverages and water products in Azerbaijan. As the official distributor of Georgia's Boom Group company, our company has exclusive sales rights for the most popular and beloved Chito Gvrito lemonades in our country. In addition, Turan SPS collaborates with the manufacturer of Georgia's famous Sairme therapeutic waters and is the only official distributor of this water in Azerbaijan. Sairme waters, rich with beneficial minerals for the organism, providing natural freshness, are presented to our customers in premium quality. Our company is also the official distributor of premium fruit juices from IRIB Group located in the Dagestan Autonomous Republic of Russia. IRIB juices are distinguished by natural fruit taste and high quality standards, presented to our customers in Azerbaijan thanks to Turan SPS. As Turan SPS, our goal is not only to provide products to our customers, but also to ensure natural taste, freshness and health in every sip. By bringing together the highest quality lemonades, fruit juices, therapeutic and natural spring waters in Azerbaijan, we strive to make every day more delicious and refreshing.</p>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ─── Contact ─── -->
+        <section class="page-section" id="contact">
+            <div class="container">
+                <div class="contact-card reveal">
+
+                    <!-- Left: info panel -->
+                    <div class="contact-left">
+                        <h2 class="contact-title" data-translate="contact_heading">Contact &amp; Order</h2>
+                        <p  class="contact-note"  data-translate="contact_note">Contact us to place an order or get more information.</p>
+
+                        <div class="contact-info-list">
+                            <div class="contact-info-item">
+                                <div class="contact-info-icon">📞</div>
+                                <div>
+                                    <p class="contact-info-label">Call or WhatsApp</p>
+                                    <p class="contact-info-val" data-translate="contact_phone">+994 55 664 24 99</p>
                                 </div>
-                                <!-- Product Details -->
-                                <div class="product-details">
-                                    <h3 class="product-name" data-translate="sairme_spring_name">Spring Water</h3>
-                                    <p class="product-description" data-translate="sairme_spring_desc">
-                                        Waters extracted from the deep layers of Georgia's famous therapeutic Sairme region, rich with minerals and preserving their natural freshness. Gives health and energy in every sip. Bottle types: Plastic: 2L, 1L, 0.5L; Glass: 0.2L, 0.5L; Premium glass: 0.5L.
-                                    </p>
-                                    <div class="product-tags">
-                                        <span class="product-tag" data-translate="tag_natural">Natural</span>
-                                        <span class="product-tag" data-translate="tag_refreshing">Refreshing</span>
-                                    </div>
+                            </div>
+                            <div class="contact-info-item">
+                                <div class="contact-info-icon">✉️</div>
+                                <div>
+                                    <p class="contact-info-label">Email Us</p>
+                                    <p class="contact-info-val email-val" data-translate="contact_email">turansps.office@gmail.com</p>
                                 </div>
                             </div>
                         </div>
 
-                        <!-- Product: Mineral Water -->
-                        <div class="product-item">
-                            <div class="product-layout">
-                                <!-- Product Image -->
-                                <div class="product-image-container">
-                                    <img src="SPS-img/SAIRME_Water_png/Sairme_m.png" alt="Sairme Mineral Water" class="product-image">
-                                </div>
-                                <!-- Product Details -->
-                                <div class="product-details">
-                                    <h3 class="product-name" data-translate="sairme_mineral_name">Mineral Water</h3>
-                                    <p class="product-description" data-translate="sairme_mineral_desc">
-                                        Sairme mineral waters are known for their natural composition, rich minerals and high quality, considered beneficial for the organism. We present these pure and refreshing mineral waters to our customers in Azerbaijan with the highest quality. Bottle types: Plastic: 2L, 1L, 0.5L; Glass: 0.2L, 0.5L; Premium glass: 0.5L.
-                                    </p>
-                                    <div class="product-tags">
-                                        <span class="product-tag" data-translate="tag_natural">Natural</span>
-                                        <span class="product-tag" data-translate="tag_herbal">Herbal</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- New Segment 1: Image-Only Spring Water Group -->
-                        <div class="product-item image-only">
-                            <div class="product-layout">
-                                <div class="product-image-container">
-                                    <img src="SPS-img/SAIRME_Water_png/Sairme_6_q.png" alt="Sairme Spring Water Group" class="product-image large-image">
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- New Segment 2: Image-Only Mineral Water Group -->
-                        <div class="product-item image-only">
-                            <div class="product-layout">
-                                <div class="product-image-container">
-                                    <img src="SPS-img/SAIRME_Water_png/Sairme_6_m.png" alt="Sairme Mineral Water Group" class="product-image large-image">
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                </section>
-
-        <!-- SAIRME Lemonade Brand Section -->
-        <section class="brand-banner-section">
-            <!-- Banner Image -->
-            <div class="brand-banner-wrapper">
-                <video class="brand-banner-image" autoplay muted loop playsinline poster="SPS-img/SAIRME_Lemonade_png/SairmeL_baner.png">
-                    <source src="SPS-img/SAIRME_Lemonade_png/SairmeL_banervid.mp4" type="video/mp4">
-                    Your browser does not support the video tag.
-                </video>
-            </div>
-            
-            <!-- Banner Text Below -->
-            <div class="banner-text-wrapper">
-                <div class="banner-text">
-                    <h2 data-translate="sairme_lemonade_title">SAIRME Lemonade</h2>
-                    <p data-translate="sairme_lemonade_text">The company has been producing SAIRME LEMONADE since 2017. Prepared with high-quality Georgian water, offered in the budget segment.</p>
-                </div>
-            </div>
-        </section>
-                    
-        <!-- SAIRME Lemonade Products Showcase -->
-        <section class="products-showcase">
-            <div class="showcase-header">
-                <h2 class="showcase-title" data-translate="sairme_lemonade_showcase_title">SAIRME Lemonades</h2>
-                <p class="showcase-subtitle" data-translate="sairme_lemonade_showcase_subtitle">Natural mineral-based lemonades from Georgia's clean Sairme springs. Available in 0.5L glass bottles.</p>
-            </div>
-
-            <div class="products-grid">
-                <!-- Flavor: Pear -->
-                <div class="product-item">
-                    <div class="product-layout">
-                        <!-- Product Image -->
-                        <div class="product-image-container">
-                            <img src="SPS-img/SAIRME_Lemonade_png/sl_armud.png" alt="Pear Lemonade" class="product-image">
-                        </div>
-                        <div class="product-details">
-                            <h3 class="product-name" data-translate="sairme_pear_name">Pear Lemonade</h3>
-                            <p class="product-description" data-translate="sairme_pear_desc">Delicate pear taste with natural mineral water.</p>
-                            <div class="product-tags">
-                                <span class="product-tag" data-translate="tag_fruity">Fruity</span>
-                                <span class="product-tag" data-translate="tag_refreshing">Refreshing</span>
-                            </div>
+                        <div class="social-row">
+                            <a href="https://www.instagram.com/turan_sps/" class="social-ico" target="_blank" rel="noopener" aria-label="Instagram">
+                                <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+                            </a>
+                            <a href="https://www.facebook.com/profile.php?id=61585589826672" class="social-ico" target="_blank" rel="noopener" aria-label="Facebook">
+                                <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+                            </a>
+                            <a href="https://www.tiktok.com/@turansps" class="social-ico" target="_blank" rel="noopener" aria-label="TikTok">
+                                <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.77 0 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.27 6.27 0 0 0-.79-.05 6.34 6.34 0 0 0 0 12.68 6.34 6.34 0 0 0 6.33-6.34V8.73a8.2 8.2 0 0 0 4.79 1.53V6.79a4.85 4.85 0 0 1-1.02-.1z"/></svg>
+                            </a>
                         </div>
                     </div>
-                </div>
 
-                <!-- Flavor: Feijoa -->
-                <div class="product-item">
-                    <div class="product-layout">
-                        <!-- Product Image -->
-                        <div class="product-image-container">
-                            <img src="SPS-img/SAIRME_Lemonade_png/sl_feyxua.png" alt="Feijoa Lemonade" class="product-image">
-                        </div>
-                        <div class="product-details">
-                            <h3 class="product-name" data-translate="sairme_feijoa_name">Feijoa Lemonade</h3>
-                            <p class="product-description" data-translate="sairme_feijoa_desc">Exotic feijoa taste with a refreshing twist.</p>
-                            <div class="product-tags">
-                                <span class="product-tag" data-translate="tag_fruity">Fruity</span>
-                                <span class="product-tag" data-translate="tag_refreshing">Refreshing</span>
+                    <!-- Right: form panel -->
+                    <div class="contact-right">
+                        <form action="https://formsubmit.co/ajax/turansps.office@gmail.com"
+                              method="POST" id="contactForm">
+                            <input type="hidden" name="_captcha" value="false">
+                            <div class="form-field">
+                                <label class="form-label" data-translate="label_email">Contact Email</label>
+                                <input type="email" name="email" class="form-input" placeholder="your@email.com" required>
                             </div>
-                        </div>
+                            <div class="form-field">
+                                <label class="form-label" data-translate="label_message">Message</label>
+                                <textarea name="message" class="form-input form-textarea" placeholder="How can we help you?" required></textarea>
+                            </div>
+                            <button type="submit" class="form-submit" data-translate="submit_button">Send</button>
+                        </form>
                     </div>
-                </div>
 
-                <!-- Flavor: Tarragon -->
-                <div class="product-item">
-                    <div class="product-layout">
-                        <!-- Product Image -->
-                        <div class="product-image-container">
-                            <img src="SPS-img/SAIRME_Lemonade_png/sl_tarxun.png" alt="Tarragon Lemonade" class="product-image">
-                        </div>
-                        <div class="product-details">
-                            <h3 class="product-name" data-translate="sairme_tarragon_name">Tarragon Lemonade</h3>
-                            <p class="product-description" data-translate="sairme_tarragon_desc">Herbal tarragon taste for a unique experience.</p>
-                            <div class="product-tags">
-                                <span class="product-tag" data-translate="tag_herbal">Herbal</span>
-                                <span class="product-tag" data-translate="tag_refreshing">Refreshing</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Flavor: Grape -->
-                <div class="product-item">
-                    <div class="product-layout">
-                        <!-- Product Image -->
-                        <div class="product-image-container">
-                            <img src="SPS-img/SAIRME_Lemonade_png/sl_uzum.png" alt="Grape Lemonade" class="product-image">
-                        </div>
-                        <div class="product-details">
-                            <h3 class="product-name" data-translate="sairme_grape_name">Grape Lemonade</h3>
-                            <p class="product-description" data-translate="sairme_grape_desc">Sweet grape essence with bright freshness.</p>
-                            <div class="product-tags">
-                                <span class="product-tag" data-translate="tag_fruity">Fruity</span>
-                                <span class="product-tag" data-translate="tag_refreshing">Refreshing</span>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- About Section -->
-        <section class="about-section" id="about">
-            <div class="about-content">
-                <h2 data-translate="about_heading">About Turan SPS</h2>
-                <p data-translate="about_text">Turan SPS is a leading company founded in 2024 and operating in the field of distribution of quality beverages and water products in Azerbaijan. As the official distributor of Georgia's Boom Group company, our company has exclusive sales rights for the most popular and beloved Chito Gvrito lemonades in our country. In addition, Turan SPS collaborates with the manufacturer of Georgia's famous Sairme therapeutic waters and is the only official distributor of this water in Azerbaijan. Sairme waters, rich with beneficial minerals for the organism, providing natural freshness, are presented to our customers in premium quality. Our company is also the official distributor of premium fruit juices from IRIB Group located in the Dagestan Autonomous Republic of Russia. IRIB juices are distinguished by natural fruit taste and high quality standards, presented to our customers in Azerbaijan thanks to Turan SPS. As Turan SPS, our goal is not only to provide products to our customers, but also to ensure natural taste, freshness and health in every sip. By bringing together the highest quality lemonades, fruit juices, therapeutic and natural spring waters in Azerbaijan, we strive to make every day more delicious and refreshing.</p>
-            </div>
-        </section>
+    </main>
 
 
-         <!-- Contact & Order Section -->
-
-        <section class="contact-section" id="contact">
-            <div class="contact-content">
-                <h2 data-translate="contact_heading">Contact & Order</h2>
-                <p class="contact-note" data-translate="contact_note">
-                    Contact us to place an order or get more information.
-                </p>
-                <div class="contact-info">
-                    <p data-translate="contact_phone">Phone / WhatsApp:<br>+994 55 664 24 99</p>
-                    <p class="email-text" data-translate="contact_email">Email: turansps.office@gmail.com</p>
+    <!-- ══════════════════════════════════════
+         FOOTER
+    ══════════════════════════════════════ -->
+    <footer class="site-footer">
+        <div class="container footer-inner">
+            <div class="footer-brand">
+                <img src="SPS-img/SPS_Logo_png/Turan-SPS.png" alt="" class="footer-logo" aria-hidden="true">
+                <div>
+                    <div class="footer-brand-name">TURAN <span class="footer-sps">SPS</span></div>
+                    <p class="footer-tagline" data-translate="footer_tagline">Fresh Taste of Georgia</p>
                 </div>
-                <!-- Social Media Buttons -->
-                <div class="social-buttons">
-                    <a href="https://www.instagram.com/turan_sps/" class="social-btn instagram" target="_blank">Instagram</a>
-                    <a href="https://www.facebook.com/profile.php?id=61585589826672" class="social-btn facebook" target="_blank">Facebook</a>
-                    <a href="https://www.tiktok.com/@turansps" class="social-btn tiktok" target="_blank">TikTok</a>
-                </div>
-
-                <form 
-                    action="https://formsubmit.co/ajax/turansps.office@gmail.com"
-                    method="POST"
-                    class="contact-form"
-                    id="contactForm"
-                >
-                    <input type="hidden" name="_captcha" value="false">
-
-                    <input 
-                        type="email" 
-                        name="email" 
-                        placeholder="Email" 
-                        required
-                    >
-
-                    <textarea 
-                        name="message" 
-                        placeholder="Text / Message" 
-                        required
-                    ></textarea>
-
-                    <button type="submit" class="send-btn" data-translate="submit_button">Send</button>
-                </form>
             </div>
-        </section>
-
-        <!-- ✅ SUCCESS TOAST MESSAGE -->
-        <div class="toast-message" id="toastMessage">
-            Message has been sent
+            <nav class="footer-nav" aria-label="Footer navigation">
+                <a href="#about"    class="footer-nav-link" data-translate="footer_story">Our Story</a>
+                <a href="#products" class="footer-nav-link" data-translate="footer_products">Products</a>
+                <a href="#"         class="footer-nav-link" data-translate="footer_where">Where to Buy</a>
+                <a href="#contact"  class="footer-nav-link" data-translate="footer_contact">Contact</a>
+            </nav>
         </div>
-
-        <!-- ✅ JS (handles sending + toast display) -->
-        <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            const form = document.getElementById("contactForm");
-            const toast = document.getElementById("toastMessage");
-
-            form.addEventListener("submit", function (e) {
-                e.preventDefault();
-
-                fetch(form.action, {
-                    method: "POST",
-                    body: new FormData(form)
-                })
-                .then(response => {
-                    if (response.ok) {
-                        // Show toast
-                        toast.classList.add("show");
-
-                        // Hide toast after 2 seconds
-                        setTimeout(() => {
-                            toast.classList.remove("show");
-                        }, 2000);
-
-                        // Reset form
-                        form.reset();
-                    } else {
-                        alert("Message could not be sent.");
-                    }
-                })
-                .catch(() => {
-                    alert("Network error. Please try again.");
-                });
-            });
-        });
-        </script>
-
-
-    <!-- Footer Section -->
-    <footer class="main-footer">
-        <div class="footer-content">
-            <div class="footer-logo">
-                <div class="footer-brand">Turan SPS</div>
-                <p data-translate="footer_tagline">Fresh Taste of Georgia</p>
-            </div>
-            <div class="footer-links">
-                <a href="#" class="footer-link" data-translate="footer_story">Our Story</a>
-                <a href="#products" class="footer-link" data-translate="footer_products">Products</a>
-                <a href="#" class="footer-link" data-translate="footer_where">Where to Buy</a>
-                <a href="#contact" class="footer-link" data-translate="footer_contact">Contact</a>
-            </div>
-        </div>
-        <div class="footer-bottom">
+        <div class="container footer-bottom">
             <p>&copy; 2024 Turan SPS. <span data-translate="footer_copyright">Taste the freshness of Georgia.</span></p>
         </div>
     </footer>
 
+    <!-- Toast notification -->
+    <div class="site-toast" id="siteToast" role="status" aria-live="polite"></div>
+
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Image viewer">
+        <div class="lightbox-inner" id="lightboxInner">
+            <button class="lightbox-close" id="lightboxClose" aria-label="Close image">&#x2715;</button>
+            <img class="lightbox-img" id="lightboxImg" src="" alt="">
+        </div>
+    </div>
+
+
+    <!-- ══════════════════════════════════════
+         SCRIPTS
+    ══════════════════════════════════════ -->
     <script>
+    /* ── Form ── */
+    document.getElementById('contactForm').addEventListener('submit', async function(e) {
+        e.preventDefault();
+        try {
+            const res = await fetch(this.action, { method: 'POST', body: new FormData(this) });
+            showToast(res.ok ? 'Message sent ✓' : 'Error — please try again');
+            if (res.ok) this.reset();
+        } catch { showToast('Network error. Please try again.'); }
+    });
+    function showToast(msg) {
+        const t = document.getElementById('siteToast');
+        t.textContent = msg;
+        t.classList.add('toast-show');
+        setTimeout(() => t.classList.remove('toast-show'), 3000);
+    }
 
-        // Language translations loaded from translations.json
-        fetch('translations.json')
-            .then(function(response) {
-                if (!response.ok) throw new Error('Could not load translations.json');
-                return response.json();
-            })
-            .then(function(translations) {
-                initTranslations(translations);
-            })
-            .catch(function(err) {
-                console.error('Translation load error:', err);
+    /* ── Translations ── */
+    fetch('translations.json')
+        .then(r => { if (!r.ok) throw new Error('translations.json not found'); return r.json(); })
+        .then(data => bootApp(data))
+        .catch(err => console.warn(err));
+
+    function bootApp(translations) {
+        let lang = 'en';
+
+        function applyLang(l) {
+            lang = l;
+            document.getElementById('langPickerLabel').textContent = l.toUpperCase();
+            document.querySelectorAll('[data-translate]').forEach(el => {
+                const v = translations[l]?.[el.getAttribute('data-translate')];
+                if (v) el.textContent = v;
             });
-
-        function initTranslations(translations) {
-        let currentLang = 'en';
-
-        // Language switching
-        const langBtn = document.getElementById('langBtn');
-        const langDropdown = document.getElementById('langDropdown');
-        const langOptions = document.querySelectorAll('.lang-option');
-
-        langBtn.addEventListener('click', () => {
-            langDropdown.classList.toggle('show');
-        });
-
-        langOptions.forEach(option => {
-            option.addEventListener('click', (e) => {
-                e.preventDefault();
-                const lang = option.getAttribute('data-lang');
-                switchLanguage(lang);
-                langDropdown.classList.remove('show');
-            });
-        });
-
-        function switchLanguage(lang) {
-            currentLang = lang;
-            const langNames = {en: 'EN', az: 'AZ', ru: 'RU', ka: 'KA'};
-            langBtn.textContent = langNames[lang] + ' ▼';
-            
-            document.querySelectorAll('[data-translate]').forEach(element => {
-                const key = element.getAttribute('data-translate');
-                if (translations[lang] && translations[lang][key]) {
-                    element.textContent = translations[lang][key];
-                }
-            });
+            document.querySelectorAll('.mobile-lang').forEach(b =>
+                b.classList.toggle('active', b.dataset.lang === l));
         }
 
-        document.addEventListener('click', (e) => {
-            if (!e.target.closest('.language-selector')) {
-                langDropdown.classList.remove('show');
-            }
+        /* Desktop lang picker */
+        const pickerBtn  = document.getElementById('langPickerBtn');
+        const pickerMenu = document.getElementById('langPickerMenu');
+        pickerBtn.addEventListener('click', e => {
+            e.stopPropagation();
+            const open = pickerMenu.classList.toggle('open');
+            pickerBtn.setAttribute('aria-expanded', open);
+            pickerBtn.querySelector('.lang-picker-chevron').style.transform = open ? 'rotate(180deg)' : '';
         });
-
-        // Parallax effect
-        const parallaxContainer = document.getElementById('parallaxContainer');
-        const parallaxLayers = document.querySelectorAll('.parallax-layer');
-
-        parallaxContainer.addEventListener('mousemove', (e) => {
-            const rect = parallaxContainer.getBoundingClientRect();
-            const x = (e.clientX - rect.left - rect.width / 2) / rect.width;
-            const y = (e.clientY - rect.top - rect.height / 2) / rect.height;
-
-            parallaxLayers.forEach(layer => {
-                const depth = parseFloat(layer.getAttribute('data-depth')) || 0.1;
-                const moveX = x * 50 * depth;
-                const moveY = y * 50 * depth;
-                layer.style.transform = `translate(${moveX}px, ${moveY}px)`;
-            });
+        document.addEventListener('click', () => {
+            pickerMenu.classList.remove('open');
+            pickerBtn.setAttribute('aria-expanded', 'false');
+            pickerBtn.querySelector('.lang-picker-chevron').style.transform = '';
         });
+        document.querySelectorAll('.lang-item').forEach(btn =>
+            btn.addEventListener('click', e => { e.stopPropagation(); applyLang(btn.dataset.lang); pickerMenu.classList.remove('open'); }));
 
-        parallaxContainer.addEventListener('mouseleave', () => {
-            parallaxLayers.forEach(layer => {
-                layer.style.transform = 'translate(0, 0)';
-            });
+        /* Mobile lang */
+        document.querySelectorAll('.mobile-lang').forEach(btn =>
+            btn.addEventListener('click', () => { applyLang(btn.dataset.lang); closeMobileNav(); }));
+
+        applyLang('en');
+    }
+
+    /* ── Mobile nav ── */
+    const mobileNav     = document.getElementById('mobileNav');
+    const mobileOverlay = document.getElementById('mobileNavOverlay');
+    const hamburger     = document.getElementById('hamburger');
+
+    hamburger.addEventListener('click', () => {
+        const open = mobileNav.classList.toggle('open');
+        mobileOverlay.classList.toggle('open');
+        hamburger.setAttribute('aria-expanded', open);
+        mobileNav.setAttribute('aria-hidden', !open);
+        document.body.classList.toggle('nav-open', open);
+    });
+    document.getElementById('mobileNavClose').addEventListener('click', closeMobileNav);
+    mobileOverlay.addEventListener('click', closeMobileNav);
+    document.querySelectorAll('.mobile-nav-link').forEach(a => a.addEventListener('click', closeMobileNav));
+
+    function closeMobileNav() {
+        mobileNav.classList.remove('open');
+        mobileOverlay.classList.remove('open');
+        hamburger.setAttribute('aria-expanded', 'false');
+        mobileNav.setAttribute('aria-hidden', 'true');
+        document.body.classList.remove('nav-open');
+    }
+
+    /* ── Nav scroll shrink ── */
+    const nav = document.getElementById('siteNav');
+    window.addEventListener('scroll', () =>
+        nav.classList.toggle('scrolled', window.scrollY > 60), { passive: true });
+
+    /* ── Hero scroll parallax (desktop only — skip on mobile for perf) ── */
+    if (window.matchMedia('(hover: hover) and (min-width: 768px)').matches) {
+        const lSky  = document.getElementById('layerSky');
+        const lMnt  = document.getElementById('layerMountains');
+        const lTree = document.getElementById('layerTrees');
+        const hBody = document.getElementById('heroBody');
+        const vh    = window.innerHeight;
+
+        window.addEventListener('scroll', () => {
+            const s = window.scrollY;
+            if (s > vh * 1.2) return;
+            lSky .style.transform = `translateY(${s * 0.40}px)`;
+            lMnt .style.transform = `translateY(${s * 0.25}px)`;
+            lTree.style.transform = `translateY(${s * 0.12}px)`;
+            hBody.style.transform = `translateY(${s * 0.18}px)`;
+            hBody.style.opacity   = String(Math.max(0, 1 - s / 500));
+        }, { passive: true });
+    }
+
+    /* ── Scroll reveal ── */
+    const io = new IntersectionObserver(entries => {
+        entries.forEach(e => {
+            if (!e.isIntersecting) return;
+            e.target.style.transitionDelay = e.target.style.getPropertyValue('--d') || '0s';
+            e.target.classList.add('revealed');
+            io.unobserve(e.target);
         });
+    }, { threshold: 0.06, rootMargin: '0px 0px -40px 0px' });
 
-        // Scroll animations
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -100px 0px'
-        };
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, observerOptions);
+    /* ── Lightbox ── */
+    const lightbox      = document.getElementById('lightbox');
+    const lightboxImg   = document.getElementById('lightboxImg');
+    const lightboxClose = document.getElementById('lightboxClose');
+    const lightboxInner = document.getElementById('lightboxInner');
 
-        document.querySelectorAll('.brand-banner-section, .about-section, .product-item, .contact-section').forEach(el => {
-            observer.observe(el);
-        });
-        } // end initTranslations
+    // Mark all product / juice card images as triggers
+    document.querySelectorAll('.pcard-img, .jcard-img, .img-duo-img').forEach(img => {
+        img.classList.add('lightbox-trigger');
+        img.setAttribute('tabindex', '0');
+        img.setAttribute('role', 'button');
+        img.setAttribute('aria-label', 'Click to enlarge');
+    });
+
+    function openLightbox(img) {
+        lightboxImg.src = img.src;
+        lightboxImg.alt = img.alt;
+        lightbox.classList.add('open');
+        document.body.style.overflow = 'hidden';
+        lightboxClose.focus();
+    }
+
+    function closeLightbox() {
+        lightbox.classList.remove('open');
+        document.body.style.overflow = '';
+        // Clear src after transition ends so no flash on reopen
+        setTimeout(() => { lightboxImg.src = ''; }, 320);
+    }
+
+    // Click on any trigger image
+    document.addEventListener('click', e => {
+        const trigger = e.target.closest('.lightbox-trigger');
+        if (trigger) openLightbox(trigger);
+    });
+
+    // Keyboard: Enter / Space on focused image
+    document.addEventListener('keydown', e => {
+        if ((e.key === 'Enter' || e.key === ' ') && e.target.classList.contains('lightbox-trigger')) {
+            e.preventDefault();
+            openLightbox(e.target);
+        }
+        if (e.key === 'Escape' && lightbox.classList.contains('open')) closeLightbox();
+    });
+
+    // Close via button
+    lightboxClose.addEventListener('click', closeLightbox);
+
+    // Click backdrop (outside image) to close
+    lightbox.addEventListener('click', e => {
+        if (!lightboxInner.contains(e.target)) closeLightbox();
+    });
     </script>
 </body>
 </html>
