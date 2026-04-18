@@ -440,26 +440,43 @@ body.nav-open { overflow: hidden; }
 .video-banner-overlay {
     position: absolute;
     inset: 0;
-    background: linear-gradient(to top, rgba(0,0,0,.65) 0%, transparent 55%);
+    /* Stronger gradient — covers bottom 70% so text is always on dark bg */
+    background: linear-gradient(
+        to top,
+        rgba(0,0,0,.82) 0%,
+        rgba(0,0,0,.55) 40%,
+        rgba(0,0,0,.15) 65%,
+        transparent 100%
+    );
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
-    padding: clamp(1.25rem, 4vw, 3rem) clamp(1.25rem, 5vw, 4rem);
+    padding: clamp(1rem, 4vw, 3rem) clamp(1rem, 5vw, 4rem);
+    /* Ensure text never overflows the banner */
+    overflow: hidden;
 }
 .video-banner-title {
     font-family: var(--f-serif);
-    font-size: clamp(1.4rem, 3.5vw, 3rem);
+    font-size: clamp(1.25rem, 3.5vw, 3rem);
     font-weight: 900;
     color: #fff;
-    line-height: 1.1;
-    margin-bottom: .6rem;
+    line-height: 1.15;
+    margin-bottom: .5rem;
+    /* Strong outline so text reads on any video frame */
+    text-shadow:
+        0 2px 12px rgba(0,0,0,.9),
+        0 1px 3px rgba(0,0,0,1),
+        0 0 40px rgba(0,0,0,.6);
 }
 .video-banner-text {
-    font-size: clamp(.82rem, 1.4vw, 1rem);
-    color: rgba(255,255,255,.88);
+    font-size: clamp(.8rem, 1.4vw, 1rem);
+    color: rgba(255,255,255,.95);
     font-weight: 500;
     max-width: 580px;
-    line-height: 1.65;
+    line-height: 1.6;
+    text-shadow:
+        0 1px 6px rgba(0,0,0,.95),
+        0 1px 2px rgba(0,0,0,1);
 }
 
 
@@ -927,6 +944,19 @@ body.nav-open { overflow: hidden; }
 
     /* Video banner: change ratio on tablet */
     .video-banner { aspect-ratio: 16/9; }
+    /* Stronger overlay on tablet since video is shorter */
+    .video-banner-overlay {
+        background: linear-gradient(
+            to top,
+            rgba(0,0,0,.88) 0%,
+            rgba(0,0,0,.60) 45%,
+            rgba(0,0,0,.20) 70%,
+            transparent 100%
+        );
+        padding: 1.25rem 1.5rem;
+    }
+    .video-banner-title { font-size: clamp(1.1rem, 3.5vw, 1.8rem); }
+    .video-banner-text  { font-size: clamp(.78rem, 2vw, .95rem); }
 
     /* Product cards: stack image above text */
     .product-stack { grid-template-columns: 1fr; }
@@ -964,11 +994,21 @@ body.nav-open { overflow: hidden; }
     /* Hero: use 60vh on phone */
     .hero { height: 60svh; min-height: 380px; }
 
-    /* Video banner: square-ish on small phones */
-    .video-banner { aspect-ratio: 4/3; border-radius: 16px; }
-    .video-banner-overlay { padding: 1rem 1.1rem; }
-    .video-banner-title { font-size: 1.15rem; }
-    .video-banner-text  { font-size: .78rem; }
+    /* Video banner: taller on small phones so text has room */
+    .video-banner { aspect-ratio: 3/2; border-radius: 16px; }
+    .video-banner-overlay {
+        background: linear-gradient(
+            to top,
+            rgba(0,0,0,.92) 0%,
+            rgba(0,0,0,.70) 50%,
+            rgba(0,0,0,.25) 75%,
+            transparent 100%
+        );
+        padding: .9rem 1rem;
+        justify-content: flex-end;
+    }
+    .video-banner-title { font-size: 1rem; margin-bottom: .3rem; }
+    .video-banner-text  { font-size: .75rem; line-height: 1.5; }
 
     /* Juice grid: 1 column on small phones */
     .juice-grid    { grid-template-columns: 1fr; }
@@ -1013,7 +1053,9 @@ body.nav-open { overflow: hidden; }
 
 /* ── Very small phones (360px) ── */
 @media (max-width: 360px) {
-    .video-banner   { aspect-ratio: 1; }
+    .video-banner   { aspect-ratio: 4/3; }
+    .video-banner-title { font-size: .92rem; }
+    .video-banner-text  { font-size: .7rem; }
     .juice-grid--4  { grid-template-columns: 1fr; }
     .mobile-nav-link { font-size: 1.8rem; }
     .hero-title     { font-size: 2.2rem; }
